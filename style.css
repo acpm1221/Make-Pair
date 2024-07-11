@@ -1,0 +1,94 @@
+:root {
+    --card-size: min(14vh, 14vw);
+    --transition-duration: 1s;
+}
+
+body{
+    background-image: url(https://static.vecteezy.com/system/resources/previews/001/895/642/non_2x/question-mark-on-blue-background-paper-art-style-vector.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.heading{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+.btn-restart{
+    border: none;
+    background-color: aqua;
+    height: 40px;
+    width: 150px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.game-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.grid-board {
+    display: inline-grid;
+    grid-template-rows: repeat(4, var(--card-size));
+    grid-template-columns: repeat(4, var(--card-size));
+    gap: min(2vh, 2vw);
+}
+
+.grid-front {
+    position: absolute;
+}
+
+.card {
+    height: var(--card-size);
+    width: var(--card-size);
+    background: rgb(238,174,202);
+    background: radial-gradient(circle,  rgba(238,174,202,1) 36%, rgba(148,187,233,1) 100%);
+    border-radius: 50% ;
+    border: 1px solid rgb(214, 214, 214);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    font-size: calc(var(--card-size) / 2);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: var(--transition-duration) transform;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restarting .card {
+    animation: bubbleEffect 1.5s;
+}
+
+@keyframes bubbleEffect {
+    25% {
+        transform: scale(0.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.card.back-card {
+    transform: rotateY(180deg);
+}
+
+.card.flipped {
+    background-color: yellowgreen;
+    transform: rotateY(180deg);
+}
+
+.card.back-card.flipped {
+    background-color: yellowgreen;
+    transform: rotateY(360deg);
+}
+
+.card.matched {
+    transform: rotateY(180deg);
+}
+
+.card.back-card.matched {
+    transform: rotateY(360deg);
+}
